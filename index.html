@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rascunho site</title>
+    
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        #h1{
+            text-align: center;
+            margin-top: 25px;
+        }
+        .field{
+            width: 40%;
+            margin: 10px;
+            padding: 5px 10px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        legend{
+            margin-top: 5px;
+        }
+        .container{
+            display:flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .quadros{
+            width: 24%;
+            height: 200px;
+            background-color: silver;
+            border-radius: 15px;
+            border: 2px solid black;
+            padding: 10px;
+            margin: 10px 0px;
+           
+        }
+        .btn{
+            margin-top: 10px;
+            padding: 3px;
+            background-color: rgba(255, 255, 255, 0.637);
+            border: none;
+            border-radius: 2px;
+            box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.363);
+            
+        }
+        .btn:hover{
+            background-color: rgb(255, 255, 255);
+            box-shadow: 1px 2px 1px 1px rgba(0, 0, 0, 0.363);
+            cursor: pointer;
+        }
+        @media only screen and (min-width: 481px) and (max-width: 768px){
+            .field{
+                width: auto;
+            }
+            .quadros{
+                width: 37%
+            }
+        }
+        @media only screen and (min-width: 320px) and (max-width: 480px){
+            .field{
+                width: 87%;
+                height: 235px;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+            }
+            form{
+                display: flex;
+                flex-direction: column;
+                
+            }
+            .container-btn{
+                
+                display: flex;
+                flex-direction: column;
+                margin-left: -47%;
+
+            }
+            
+            .container{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .quadros{
+                width:80%;
+                height: 160px;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <main>
+            <fieldset class="field">
+                
+                <form method="post" name="formcorText">
+                    <legend>Textos:</legend>
+                    <label for="corh1">Cor de h1: </label>
+                    <input type="color" name="corH1" id="corh1">
+
+                    <label for="corh2">Cor de h2: </label>
+                    <input type="color" name="corH2" id="corh2">
+
+                    <label for="cortexto">Cor de Texto: </label>
+                    <input type="color" name="corTexto" id="cortexto">
+                </form>    
+                
+                <form method="post" name="formcorStyle">
+                    <legend>Estilos:</legend>
+                    <label for="corfundo">Cor de fundo: </label>
+                    <input type="color" value="#ffffff" name="corFundo" id="corFundo">
+
+                    <label for="corborda">Cor de Borda: </label>
+                    <input type="color" name="corBorda" id="corBorda">
+
+                    <label for="corfundodiv">Cor de fundo div: </label>
+                    <input type="color" value="#ffffff" name="corFundoDiv" id="corFundoDiv">
+                </form>
+                <div class="container-btn">
+                    <input class="btn"type="button" name="aplicarcor" value="aplicar" onclick="aplicarCor()">
+
+                    <input class="btn"type="button" name="resetarpagina" value="resetar página" onClick="resetarPagina()">
+
+                    <input class="btn"type="button" name="mostrarcodigo" value="mostrar o código" onclick="mostrarCodigosCores()">
+                </div>
+            </fieldset>    
+            <section>
+                <h1 id="h1">Aqui fica o título do site!</h1>
+                <section class="container">
+                    <div class="quadros"><h2>Título</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora ipsam consectetur delectus id architecto impedit autem unde, doloremque blanditiis ea exercitationem hic tempore dolorem, error amet quo cupiditate quidem sit.</p></div>
+                    <div class="quadros"><h2>Título</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora ipsam consectetur delectus id architecto impedit autem unde, doloremque blanditiis ea exercitationem hic tempore dolorem, error amet quo cupiditate quidem sit.</p></div>
+                    <div class="quadros"><h2>Título</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora ipsam consectetur delectus id architecto impedit autem unde, doloremque blanditiis ea exercitationem hic tempore dolorem, error amet quo cupiditate quidem sit.</p></div>
+                    <div class="quadros"><h2>Título</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora ipsam consectetur delectus id architecto impedit autem unde, doloremque blanditiis ea exercitationem hic tempore dolorem, error amet quo cupiditate quidem sit.</p></div>
+                    <div class="quadros"><h2>Título</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora ipsam consectetur delectus id architecto impedit autem unde, doloremque blanditiis ea exercitationem hic tempore dolorem, error amet quo cupiditate quidem sit.</p></div>
+                    <div class="quadros"><h2>Título</h2><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora ipsam consectetur delectus id architecto impedit autem unde, doloremque blanditiis ea exercitationem hic tempore dolorem, error amet quo cupiditate quidem sit.</p></div>
+                </section>
+            </section>
+        </main>
+
+        <script>
+           var classeQuadros = document.getElementsByClassName("quadros");
+            
+            function aplicarCor(){
+                //===========BACKGROUND
+                var fundo = document.getElementById("corFundo").value;
+                document.body.style.backgroundColor = fundo;
+                
+                //=========== BORDA
+                var valorBorda = document.getElementById("corBorda").value;
+                
+                for(var i = 0; i < classeQuadros.length; i++){
+                    classeQuadros[i].style.borderColor = valorBorda;
+                }
+                //=========== FUNDO DIV
+                var valorfundoDiv = document.getElementById("corFundoDiv").value;
+                
+                for(var i = 0; i < classeQuadros.length; i++){
+                    classeQuadros[i].style.backgroundColor = valorfundoDiv;
+                }
+                //=========== COR H1
+                var valorCorH1 = document.getElementById("corh1").value;
+                var corH1 = document.getElementById("h1").style.color = valorCorH1
+                //============ COR H2
+                var valorCorH2 = document.getElementById("corh2").value;
+                
+                for(var i = 0; i < classeQuadros.length; i++){
+                    classeQuadros[i].getElementsByTagName("H2")[0].style.color = valorCorH2;
+                }
+                //=========== COR TEXT
+                var valorCorText = document.getElementById("cortexto").value;
+                    
+                    for(var i = 0; i < classeQuadros.length; i++){
+                        classeQuadros[i].getElementsByTagName("P")[0].style.color = valorCorText;
+                    }
+                }
+                function mostrarCodigosCores(){
+                    var fundo = document.getElementById("corFundo").value;
+                    var valorBorda = document.getElementById("corBorda").value;
+                    var valorfundoDiv = document.getElementById("corFundoDiv").value;
+                    var valorCorH1 = document.getElementById("corh1").value;
+                    var valorCorH2 = document.getElementById("corh2").value;
+                    var valorCorText = document.getElementById("cortexto").value;
+                    
+                    alert("Cor de fundo é: \n"+fundo+"\n"+
+                    "Cor de borda é: \n"+valorBorda+"\n"+
+                    "Cor de fundo da div é: \n"+valorfundoDiv+"\n"+
+                    "Cor do h1 é: \n"+valorCorH1+"\n"+
+                    "Cor do h2 é: \n"+valorCorH2+"\n"+
+                    "Cor do texto é: \n"+valorCorText
+                    )
+                
+                }
+                
+                function resetarPagina(){
+                    window.location.reload();
+                }
+
+        </script>
+    </body>
+</html>
